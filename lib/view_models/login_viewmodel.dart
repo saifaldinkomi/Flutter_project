@@ -6,11 +6,10 @@ import 'package:saif_final/views/subscribed_courses_page.dart';
 
 class LoginViewModel {
   String? errorMessage;
-///////////////////////////////////edit
   Future<void> login(LoginModel loginData, BuildContext context) async {
     errorMessage = null;
 
-    const String loginUrl = "http://feeds.ppu.edu/api/login";
+    String loginUrl = "http://feeds.ppu.edu/api/login";
 
     try {
       final response = await http.post(
@@ -24,7 +23,7 @@ class LoginViewModel {
         if (jsonObject['status'] == 'success') {
           String token = jsonObject['session_token'];
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Login Successful!')),
+            SnackBar(content: Text('Login Successful!')),
           );
           Navigator.push(
             context,

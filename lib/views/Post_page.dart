@@ -77,31 +77,31 @@ class _PostPageState extends State<PostPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Post Page"),
+        title: Text("Post Page"),
       ),
       drawer: DrowerPage(token: widget.token),
       body: isLoading
-          ? const Center(child: CircularProgressIndicator())
+          ? Center(child: CircularProgressIndicator())
           : posts.isEmpty
-              ? const Center(child: Text("No posts available"))
+              ? Center(child: Text("No posts available"))
               : ListView.builder(
                   itemCount: posts.length,
                   itemBuilder: (context, index) {
                     final post = posts[index];
                     return Card(
-                      margin: const EdgeInsets.all(8.0),
+                      margin: EdgeInsets.all(8.0),
                       child: ListTile(
                         title: Text(post.author),
                         subtitle: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(post.body),
-                            const SizedBox(height: 8),
+                            SizedBox(height: 8),
                             Text("Posted on: ${post.datePosted}"),
                           ],
                         ),
                         trailing: IconButton(
-                          icon: const Icon(Icons.edit),
+                          icon: Icon(Icons.edit),
                           onPressed: () => _showEditDialog(context, post),
                         ),
                         onTap: () {
@@ -123,7 +123,7 @@ class _PostPageState extends State<PostPage> {
                 ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showPostDialog(context),
-        child: const Icon(Icons.add),
+        child: Icon(Icons.add),
       ),
     );
   }
@@ -134,24 +134,23 @@ class _PostPageState extends State<PostPage> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text("Add New Post"),
+        title: Text("Add New Post"),
         content: TextField(
           controller: controller,
-          decoration:
-              const InputDecoration(hintText: "Enter your post content"),
+          decoration: InputDecoration(hintText: "Enter your post content"),
           maxLines: 4,
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(),
-            child: const Text("Cancel"),
+            child: Text("Cancel"),
           ),
           TextButton(
             onPressed: () {
               addPost(controller.text);
               Navigator.of(context).pop();
             },
-            child: const Text("Post"),
+            child: Text("Post"),
           ),
         ],
       ),
@@ -165,23 +164,23 @@ class _PostPageState extends State<PostPage> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text("Edit Post"),
+        title: Text("Edit Post"),
         content: TextField(
           controller: controller,
-          decoration: const InputDecoration(hintText: "Edit your post content"),
+          decoration: InputDecoration(hintText: "Edit your post content"),
           maxLines: 4,
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(),
-            child: const Text("Cancel"),
+            child: Text("Cancel"),
           ),
           TextButton(
             onPressed: () {
               editPost(post.id, controller.text);
               Navigator.of(context).pop();
             },
-            child: const Text("Update"),
+            child: Text("Update"),
           ),
         ],
       ),

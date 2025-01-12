@@ -46,7 +46,8 @@ class _CourseListState extends State<CourseList> {
 
   Future<void> _loadSections(int courseId) async {
     try {
-      final fetchedSections = await _courseModel.getSections(widget.token, courseId);
+      final fetchedSections =
+          await _courseModel.getSections(widget.token, courseId);
       setState(() {
         sections[courseId] = fetchedSections;
       });
@@ -57,7 +58,8 @@ class _CourseListState extends State<CourseList> {
 
   Future<void> _loadSubscriptions() async {
     try {
-      final fetchedSubscriptions = await _courseModel.getSubscriptions(widget.token);
+      final fetchedSubscriptions =
+          await _courseModel.getSubscriptions(widget.token);
       setState(() {
         sectionSubscriptions = fetchedSubscriptions;
       });
@@ -79,7 +81,8 @@ class _CourseListState extends State<CourseList> {
     final subscriptionId = sectionSubscriptions[sectionId]?['subscription_id'];
     if (subscriptionId != null) {
       try {
-        await _courseModel.unsubscribeSection(widget.token, courseId, sectionId, subscriptionId);
+        await _courseModel.unsubscribeSection(
+            widget.token, courseId, sectionId, subscriptionId);
         await _loadSubscriptions();
       } catch (e) {
         _showErrorDialog('Error unsubscribing: $e');
@@ -92,12 +95,12 @@ class _CourseListState extends State<CourseList> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: const Text('Error'),
+          title: Text('Error'),
           content: Text(message),
           actions: [
             TextButton(
               onPressed: () => Navigator.of(context).pop(),
-              child: const Text('OK'),
+              child: Text('OK'),
             ),
           ],
         );
@@ -109,13 +112,13 @@ class _CourseListState extends State<CourseList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Courses"),
+        title: Text("Courses"),
       ),
       drawer: DrowerPage(token: widget.token),
       body: isLoading
-          ? const Center(child: CircularProgressIndicator())
+          ? Center(child: CircularProgressIndicator())
           : courses.isEmpty
-              ? const Center(child: Text("No courses available"))
+              ? Center(child: Text("No courses available"))
               : ListView.builder(
                   itemCount: courses.length,
                   itemBuilder: (context, index) {
@@ -125,7 +128,7 @@ class _CourseListState extends State<CourseList> {
 
                     return Card(
                       elevation: 4,
-                      margin: const EdgeInsets.all(8),
+                      margin: EdgeInsets.all(8),
                       child: ExpansionTile(
                         title: Text(course['name']),
                         subtitle: Text("College: ${course['college']}"),
@@ -136,7 +139,7 @@ class _CourseListState extends State<CourseList> {
                         },
                         children: courseSections.isEmpty
                             ? [
-                                const Padding(
+                                Padding(
                                   padding: EdgeInsets.all(8.0),
                                   child: Text("No sections available."),
                                 ),
@@ -148,13 +151,16 @@ class _CourseListState extends State<CourseList> {
 
                                 return ListTile(
                                   title: Text("Section: ${section['name']}"),
-                                  subtitle: Text("Lecturer: ${section['lecturer']}"),
+                                  subtitle:
+                                      Text("Lecturer: ${section['lecturer']}"),
                                   trailing: IconButton(
                                     icon: Icon(
                                       isSubscribed
                                           ? Icons.remove_circle
                                           : Icons.add_circle,
-                                      color: isSubscribed ? Colors.red : Colors.green,
+                                      color: isSubscribed
+                                          ? Colors.red
+                                          : Colors.green,
                                     ),
                                     onPressed: () {
                                       if (isSubscribed) {

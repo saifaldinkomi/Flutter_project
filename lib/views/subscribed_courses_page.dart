@@ -30,7 +30,7 @@ class _SubscribedCoursesPageState extends State<SubscribedCoursesPage> {
       isLoading = true;
       errorMessage = null;
     });
-    const String subscriptionsUrl = "http://feeds.ppu.edu/api/v1/subscriptions";
+    String subscriptionsUrl = "http://feeds.ppu.edu/api/v1/subscriptions";
 
     try {
       final response = await http.get(
@@ -71,27 +71,27 @@ class _SubscribedCoursesPageState extends State<SubscribedCoursesPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Subscribed Courses"),
+        title: Text("Subscribed Courses"),
       ),
       drawer: DrowerPage(token: widget.token),
       body: isLoading
-          ? const Center(child: CircularProgressIndicator())
+          ? Center(child: CircularProgressIndicator())
           : errorMessage != null
               ? Center(
                   child: Text(
                     errorMessage!,
-                    style: const TextStyle(color: Colors.red),
+                    style: TextStyle(color: Colors.red),
                   ),
                 )
               : courseSubscriptions.isEmpty
-                  ? const Center(child: Text("No subscribed courses"))
+                  ? Center(child: Text("No subscribed courses"))
                   : ListView.builder(
                       itemCount: courseSubscriptions.length,
                       itemBuilder: (context, index) {
                         final subscription = courseSubscriptions[index];
                         return Card(
                           elevation: 4,
-                          margin: const EdgeInsets.all(8),
+                          margin: EdgeInsets.all(8),
                           child: ListTile(
                             title: Text("Course: ${subscription.courseName}"),
                             subtitle: Text(

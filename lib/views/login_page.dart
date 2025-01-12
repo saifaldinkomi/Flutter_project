@@ -21,7 +21,7 @@ class _LoginPageState extends State<LoginPage> {
   void _login() async {
     setState(() {
       isLoading = true;
-      errorMessage = null; 
+      errorMessage = null;
     });
 
     final loginData = LoginModel(
@@ -41,77 +41,76 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Login"),
+        title: Text("Login"),
         centerTitle: true,
       ),
       body: Center(
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.all(20.0),
+            padding: EdgeInsets.all(20.0),
             child: Form(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
+                  Text(
                     "Welcome Back!",
                     style: TextStyle(
                       fontSize: 28,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  const SizedBox(height: 10),
-                  const Text(
+                  SizedBox(height: 10),
+                  Text(
                     "Please login to your account",
                     style: TextStyle(fontSize: 16, color: Colors.grey),
                   ),
-                  const SizedBox(height: 30),
+                  SizedBox(height: 30),
                   TextFormField(
                     controller: emailController,
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
                       labelText: "Email",
-                      prefixIcon: const Icon(Icons.email),
+                      prefixIcon: Icon(Icons.email),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                     ),
                   ),
-                  const SizedBox(height: 20),
+                  SizedBox(height: 20),
                   TextFormField(
                     controller: passwordController,
                     obscureText: true,
                     decoration: InputDecoration(
                       labelText: "Password",
-                      prefixIcon: const Icon(Icons.lock),
+                      prefixIcon: Icon(Icons.lock),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                     ),
                   ),
-                  const SizedBox(height: 20),
-                
+                  SizedBox(height: 20),
                   isLoading
-                      ? const Center(child: CircularProgressIndicator())
+                      ? Center(child: CircularProgressIndicator())
                       : ElevatedButton(
                           onPressed: _login,
                           style: ElevatedButton.styleFrom(
-                            minimumSize: const Size(double.infinity, 50),
+                            minimumSize: Size(double.infinity, 50),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10.0),
                             ),
                           ),
-                          child: const Text(
+                          child: Text(
                             "Login",
                             style: TextStyle(fontSize: 18),
                           ),
                         ),
-                  const SizedBox(height: 30),
+                  SizedBox(height: 30),
                   if (errorMessage != null)
                     Padding(
-                      padding: const EdgeInsets.only(top: 16.0),
+                      padding: EdgeInsets.only(top: 16.0),
                       child: Text(
                         errorMessage!,
-                        style: const TextStyle(
+                        style: TextStyle(
                           color: Colors.red,
                           fontSize: 16,
                         ),

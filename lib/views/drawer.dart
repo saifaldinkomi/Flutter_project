@@ -5,7 +5,7 @@ import 'package:saif_final/views/subscribed_courses_page.dart';
 
 class DrowerPage extends StatefulWidget {
   final String token;
-  const DrowerPage({required this.token, super.key});
+  DrowerPage({required this.token, super.key});
 
   @override
   State<DrowerPage> createState() => _DrowerPageState();
@@ -33,21 +33,20 @@ class _DrowerPageState extends State<DrowerPage> {
                 ),
               ),
             ),
-            margin: const EdgeInsets.all(0),
-            padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
+            margin: EdgeInsets.all(0),
+            padding: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
           ),
           Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8.0),
+            padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 8.0),
             child: ListTile(
               title: Container(
-                padding: const EdgeInsets.all(10),
+                padding: EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   color: Colors.grey[200],
                   border: Border.all(color: Colors.grey),
                   borderRadius: BorderRadius.circular(8),
                 ),
-                child: const Text(
+                child: Text(
                   "All Courses",
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 16),
@@ -63,18 +62,17 @@ class _DrowerPageState extends State<DrowerPage> {
             ),
           ),
           Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8.0),
+            padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 8.0),
             child: ListTile(
               title: Container(
-                padding: const EdgeInsets.all(10),
+                padding: EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   color: Colors.grey[200],
                   border: Border.all(color: Colors.grey),
                   borderRadius: BorderRadius.circular(8),
                 ),
-                child: const Text(
-                  "Subscribe to a Course",
+                child: Text(
+                  "Subscriptions",
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 16),
                 ),
@@ -90,17 +88,16 @@ class _DrowerPageState extends State<DrowerPage> {
             ),
           ),
           Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8.0),
+            padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 8.0),
             child: ListTile(
               title: Container(
-                padding: const EdgeInsets.all(10),
+                padding: EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   color: Colors.grey[200],
                   border: Border.all(color: Colors.grey),
                   borderRadius: BorderRadius.circular(8),
                 ),
-                child: const Text(
+                child: Text(
                   "Logout",
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 16),

@@ -16,11 +16,11 @@ class CourseDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(courseDetails.courseName), 
+        title: Text(courseDetails.courseName),
       ),
       drawer: DrowerPage(token: token),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
